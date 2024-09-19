@@ -1,17 +1,22 @@
-import OpenSeadragon from "openseadragon";
+'use client';
+
 import { useEffect, useRef } from "react";
 
 export default function Banner() {
-  const viewerRef = useRef<OpenSeadragon.Viewer | null>(null);
+  const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!viewerRef.current) {
+    let viewer: any;
+
+    const initializeViewer = async () => {
+      const OpenSeadragon = (await import('openseadragon')).default;
+      
       const tileSource = "/img/banner_dzi.dzi";
       console.log("Attempting to load tile source:", tileSource);
 
       try {
-        viewerRef.current = OpenSeadragon({
-          id: "openseadragon",
+        viewer = OpenSeadragon({
+          element: viewerRef.current,
           prefixUrl: "/openseadragon/images/",
           tileSources: tileSource,
           animationTime: 0.5,
@@ -21,31 +26,35 @@ export default function Banner() {
           minZoomLevel: 1,
           visibilityRatio: 1,
           zoomPerScroll: 2,
-          debugMode: true,  // Enable debug mode for more detailed logging
+          debugMode: true,
         });
 
-        viewerRef.current.addHandler("open-failed", (event) => {
+        viewer.addHandler("open-failed", (event: any) => {
           console.error("Failed to open tile source:", event);
         });
 
-        viewerRef.current.addHandler("tile-load-failed", (event) => {
+        viewer.addHandler("tile-load-failed", (event: any) => {
           console.error("Failed to load tile:", event);
         });
 
-        viewerRef.current.addOnceHandler("open", () => {
+        viewer.addOnceHandler("open", () => {
           console.log("Successfully opened tile source");
         });
       } catch (error) {
         console.error("Error initializing OpenSeadragon:", error);
       }
-    }
+    };
+
+    initializeViewer();
 
     return () => {
-      viewerRef.current?.destroy();
+      if (viewer && typeof viewer.destroy === 'function') {
+        viewer.destroy();
+      }
     };
   }, []);
 
   return (
-    <div id="openseadragon" className="w-full h-64 md:h-96 lg:h-128"></div>
+    <div ref={viewerRef} className="w-full h-64 md:h-96 lg:h-128"></div>
   );
 }

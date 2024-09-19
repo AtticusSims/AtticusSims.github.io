@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import OpenSeadragon from 'openseadragon';
 import styles from './banner.module.css';
 
 export default function BannerPage() {
@@ -10,24 +9,42 @@ export default function BannerPage() {
   useEffect(() => {
     if (!viewerRef.current) return;
 
-    const viewer = OpenSeadragon({
-      element: viewerRef.current,
-      tileSources: '/img/banner_dzi.dzi',  // Updated to use DZI
-      prefixUrl: '/openseadragon/images/',
-      minZoomImageRatio: 0.5,
-      maxZoomPixelRatio: 2,
-      immediateRender: true,
-      visibilityRatio: 1,
-      constrainDuringPan: true,
-      showNavigationControl: false,
-      gestureSettingsTouch: {
-        pinchRotate: false,
-        zoomToRefPoint: true,
-      } as any,
-    });
+    let viewer: any;
+
+    const initializeViewer = async () => {
+      const OpenSeadragon = (await import('openseadragon')).default;
+      
+      viewer = OpenSeadragon({
+        element: viewerRef.current,
+        tileSources: '/img/banner_dzi.dzi',
+        prefixUrl: '/openseadragon/images/',
+        minZoomImageRatio: 0.5,
+        maxZoomPixelRatio: 2,
+        immediateRender: true,
+        visibilityRatio: 1,
+        constrainDuringPan: true,
+        showNavigationControl: false,
+        gestureSettingsTouch: {
+          pinchRotate: false,
+          zoomToRefPoint: true,
+        },
+      });
+
+      viewer.addHandler("open-failed", (event: any) => {
+        console.error("Failed to open tile source:", event);
+      });
+
+      viewer.addHandler("tile-load-failed", (event: any) => {
+        console.error("Failed to load tile:", event);
+      });
+    };
+
+    initializeViewer();
 
     return () => {
-      viewer.destroy();
+      if (viewer && typeof viewer.destroy === 'function') {
+        viewer.destroy();
+      }
     };
   }, []);
 
