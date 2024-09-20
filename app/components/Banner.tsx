@@ -38,8 +38,8 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
 
     viewer.addHandler('open', function() {
       const image = viewer.world.getItemAt(0);
-      const imageWidth = image.source.width;
-      const imageHeight = image.source.height;
+      const imageWidth = (image.source as any)?.width ?? image.getContentSize().x;
+      const imageHeight = (image.source as any)?.height ?? image.getContentSize().y;
       console.log('Image dimensions:', { width: imageWidth, height: imageHeight });
       
       overlays.forEach((overlay, index) => {
