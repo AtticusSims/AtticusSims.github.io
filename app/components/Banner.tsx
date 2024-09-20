@@ -4,11 +4,20 @@ import React, { useEffect, useRef } from 'react';
 import OpenSeadragon from 'openseadragon';
 import styles from './Banner.module.css';
 
-interface BannerProps {
-  tileSource: string;
+interface OverlayData {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  url: string;
 }
 
-const Banner: React.FC<BannerProps> = ({ tileSource }) => {
+interface BannerProps {
+  tileSource: string;
+  overlays: OverlayData[];
+}
+
+const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,18 +27,60 @@ const Banner: React.FC<BannerProps> = ({ tileSource }) => {
       element: viewerRef.current,
       tileSources: tileSource,
       showNavigationControl: false,
-      defaultZoomLevel: 0,
-      minZoomLevel: 0,
+      defaultZoomLevel: 1,
+      minZoomLevel: 1,
       maxZoomLevel: 10,
       visibilityRatio: 1,
       constrainDuringPan: true,
       immediateRender: true,
+      homeFillsViewer: true,
+    });
+
+    viewer.addHandler('open', function() {
+      const image = viewer.world.getItemAt(0);
+      const imageWidth = image.source.width;
+      const imageHeight = image.source.height;
+      console.log('Image dimensions:', { width: imageWidth, height: imageHeight });
+      
+      overlays.forEach((overlay, index) => {
+        const element = document.createElement('div');
+        element.style.position = 'absolute';
+        element.style.cursor = 'pointer';
+        element.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+        element.style.border = '2px solid red';
+        element.style.boxSizing = 'border-box';
+        element.onclick = () => window.open(overlay.url, '_blank');
+
+        // Convert image coordinates to viewport coordinates
+        const topLeft = viewer.viewport.imageToViewportCoordinates(
+          overlay.x * imageWidth,
+          overlay.y * imageHeight
+        );
+        const bottomRight = viewer.viewport.imageToViewportCoordinates(
+          (overlay.x + overlay.width) * imageWidth,
+          (overlay.y + overlay.height) * imageHeight
+        );
+
+        const viewportRect = new OpenSeadragon.Rect(
+          topLeft.x,
+          topLeft.y,
+          bottomRight.x - topLeft.x,
+          bottomRight.y - topLeft.y
+        );
+
+        viewer.addOverlay({
+          element: element,
+          location: viewportRect,
+        });
+
+        console.log(`Overlay ${index} position:`, viewportRect);
+      });
     });
 
     return () => {
       viewer.destroy();
     };
-  }, [tileSource]);
+  }, [tileSource, overlays]);
 
   return (
     <div className={styles.bannerContainer}>
