@@ -1,11 +1,13 @@
-name: Deploy to GitHub Pages
+name: Build and Test
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,11 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build and Export
-        run: npm run export
+      - name: Build
+        run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+      - name: Start the app
+        run: npm run start & sleep 5
+
+      - name: Test the app
+        run: curl http://localhost:3000 || exit 1

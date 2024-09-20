@@ -1,53 +1,41 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import type OpenSeadragon from 'openseadragon';
-
-// Remove the dynamic import for OpenSeadragon
-// const OpenSeadragon = dynamic(() => import('openseadragon'), {
-//   ssr: false,
-// });
+import React, { useEffect, useRef } from 'react';
+import OpenSeadragon from 'openseadragon';
+import styles from './Banner.module.css';
 
 interface BannerProps {
   tileSource: string;
 }
 
-export default function Banner({ tileSource }: BannerProps) {
+const Banner: React.FC<BannerProps> = ({ tileSource }) => {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let viewer: OpenSeadragon.Viewer | null = null;
+    if (!viewerRef.current) return;
 
-    if (typeof window !== 'undefined' && viewerRef.current) {
-      import('openseadragon').then((OpenSeadragon) => {
-        try {
-          const element = viewerRef.current;
-          if (!element) return;
-
-          viewer = OpenSeadragon.default({
-            element,
-            prefixUrl: "/openseadragon/images/",
-            tileSources: tileSource,
-            animationTime: 0.5,
-            blendTime: 0.1,
-            constrainDuringPan: true,
-            maxZoomPixelRatio: 2,
-            minZoomLevel: 1,
-            visibilityRatio: 1,
-            zoomPerScroll: 2,
-          });
-        } catch (error) {
-          console.error('Error initializing OpenSeadragon:', error);
-        }
-      });
-    }
+    const viewer = OpenSeadragon({
+      element: viewerRef.current,
+      tileSources: tileSource,
+      showNavigationControl: false,
+      defaultZoomLevel: 0,
+      minZoomLevel: 0,
+      maxZoomLevel: 10,
+      visibilityRatio: 1,
+      constrainDuringPan: true,
+      immediateRender: true,
+    });
 
     return () => {
-      if (viewer) {
-        viewer.destroy();
-      }
+      viewer.destroy();
     };
   }, [tileSource]);
 
-  return <div ref={viewerRef} style={{ width: '100%', height: '100vh' }} />;
-}
+  return (
+    <div className={styles.bannerContainer}>
+      <div ref={viewerRef} className={styles.viewer}></div>
+    </div>
+  );
+};
+
+export default Banner;
