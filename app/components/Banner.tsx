@@ -40,16 +40,11 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
       const image = viewer.world.getItemAt(0);
       const imageWidth = (image.source as any)?.width ?? image.getContentSize().x;
       const imageHeight = (image.source as any)?.height ?? image.getContentSize().y;
-      console.log('Image dimensions:', { width: imageWidth, height: imageHeight });
       
-      overlays.forEach((overlay, index) => {
+      overlays.forEach((overlay) => {
         const element = document.createElement('div');
         element.style.position = 'absolute';
         element.style.cursor = 'pointer';
-        element.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
-        element.style.border = '2px solid red';
-        element.style.boxSizing = 'border-box';
-        element.onclick = () => window.open(overlay.url, '_blank');
 
         // Convert image coordinates to viewport coordinates
         const topLeft = viewer.viewport.imageToViewportCoordinates(
@@ -73,7 +68,14 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
           location: viewportRect,
         });
 
-        console.log(`Overlay ${index} position:`, viewportRect);
+        // Use MouseTracker to handle clicks on the overlay
+        new OpenSeadragon.MouseTracker({
+          element: element,
+          clickHandler: function() {
+            window.open(overlay.url, '_blank');
+            return false; // Prevent default behavior
+          }
+        });
       });
     });
 
