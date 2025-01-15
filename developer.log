@@ -1,0 +1,37 @@
+[2023-10-15T10:00:00Z] [UPDATE] [app/admin/page.tsx]
+Description: Unified zoom handling to prevent default scroll behavior and reconcile region coordinate calculations with the transform. 
+Changes: 
+- Removed extra wheel listeners and replaced them with a single onWheel handler that calls e.preventDefault().
+- Adjusted getCoordinates() so that region fractions map consistently with the transform. 
+- Stored pan.x, pan.y in pixels, applying them directly in translate(${px}) to fix offset mismatch.
+Tests: 
+- Manual testing with various zoom levels and region placements. 
+- Verified deletion, saving, region bounding with small (0.1) and large (10) zoom. 
+Issues: 
+- None found in local testing so far.
+--- 
+
+[2023-10-15T11:00:00Z] [UPDATE] [app/admin/page.tsx]
+Description: Replaced onWheel prop with a manual wheel event listener using { passive: false }. This fixes the console warning about “Unable to preventDefault.”
+Changes: 
+- Removed onWheel={handleWheel} from the .imageContainer div.
+- Implemented a useEffect hook that attaches an event listener with passive: false for the wheel event.
+- Verified that e.preventDefault() is now allowed, removing the console error.
+Tests:
+- Local testing: zoom in/out with mouse wheel. No more console warnings.
+Issues:
+- None discovered during local testing.
+---
+
+[2024-03-21T14:30:00Z] [UPDATE] [app/components/Banner.tsx, app/banner/page.tsx]
+Description: Updated code to handle new JSON format that includes URLs and subject names for each overlay region.
+Changes:
+- Added subject field to OverlayData interface in Banner.tsx
+- Modified click handler to properly handle URLs without protocol prefix
+- Removed hardcoded URL mapping in page.tsx since URLs now come from JSON data
+Tests:
+- Verified that clicking regions opens the correct URLs from the JSON data
+- Confirmed that URLs without http/https prefix are handled correctly
+Issues:
+- None discovered during local testing.
+---
