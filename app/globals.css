@@ -1,3 +1,10 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --max-width: 1200px;
+  --border-radius: 12px;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,10 +15,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-body {
-  color: white;
-  background-color: black;
+/* Remove default anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
 }
