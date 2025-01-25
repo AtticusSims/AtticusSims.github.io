@@ -1,0 +1,5 @@
+﻿2025-01-25T02:13:49.8718000Z Post job cleanup.
+2025-01-25T02:13:50.0365189Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/AtticusSims.github.io/AtticusSims.github.io --files-from manifest.txt --use-compress-program zstdmt
+2025-01-25T02:13:54.0544556Z Cache Size: ~123 MB (129490502 B)
+2025-01-25T02:13:54.1598234Z Cache saved successfully
+2025-01-25T02:13:54.1846543Z Cache saved with the key: node-cache-Linux-npm-081f83b98a9b698bcba4b02e09fd19e6b6268fc7c44d7744f4025b5b43d715b4

@@ -15,10 +15,9 @@ const nextConfig = {
   reactStrictMode: true,
   // Handle trailing slashes consistently
   trailingSlash: true,
-  // Disable server components for static export
-  experimental: {
-    appDir: false,
-  },
+  // Remove experimental.appDir as it's not needed and causing warnings
+  basePath: "", // Add this for GitHub Pages
+  assetPrefix: "./", // Add this for GitHub Pages assets
 };
 
 module.exports = nextConfig;

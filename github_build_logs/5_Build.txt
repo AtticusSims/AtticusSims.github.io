@@ -1,0 +1,55 @@
+﻿2025-01-25T02:06:50.5927022Z ##[group]Run npm run build
+2025-01-25T02:06:50.5927284Z [36;1mnpm run build[0m
+2025-01-25T02:06:50.5958077Z shell: /usr/bin/bash -e {0}
+2025-01-25T02:06:50.5958394Z ##[endgroup]
+2025-01-25T02:06:50.7193369Z 
+2025-01-25T02:06:50.7193726Z > hkbu-image-app@0.1.0 build
+2025-01-25T02:06:50.7194183Z > npm run clean && next build
+2025-01-25T02:06:50.7194398Z 
+2025-01-25T02:06:50.8571395Z 
+2025-01-25T02:06:50.8571804Z > hkbu-image-app@0.1.0 clean
+2025-01-25T02:06:50.8572379Z > rimraf --glob ".next" "out"
+2025-01-25T02:06:50.8573031Z 
+2025-01-25T02:07:03.8115048Z  ⚠ Invalid next.config.js options detected: 
+2025-01-25T02:07:03.8116690Z  ⚠     Unrecognized key(s) in object: 'appDir' at "experimental"
+2025-01-25T02:07:03.8118358Z  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-01-25T02:07:03.8144024Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2025-01-25T02:07:03.8322727Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+2025-01-25T02:07:03.8324156Z This information is used to shape Next.js' roadmap and prioritize features.
+2025-01-25T02:07:03.8325876Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2025-01-25T02:07:03.8327028Z https://nextjs.org/telemetry
+2025-01-25T02:07:03.8327350Z 
+2025-01-25T02:07:03.8892805Z   ▲ Next.js 14.2.23
+2025-01-25T02:07:03.8893191Z 
+2025-01-25T02:07:03.9392523Z    Creating an optimized production build ...
+2025-01-25T02:07:13.9872990Z  ✓ Compiled successfully
+2025-01-25T02:07:13.9882482Z    Linting and checking validity of types ...
+2025-01-25T02:07:17.1924207Z    Collecting page data ...
+2025-01-25T02:07:18.1174154Z    Generating static pages (0/6) ...
+2025-01-25T02:07:18.1578616Z    Generating static pages (1/6) 
+2025-01-25T02:07:18.3717000Z    Generating static pages (2/6) 
+2025-01-25T02:07:18.3718964Z    Generating static pages (4/6) 
+2025-01-25T02:07:18.3721486Z  ✓ Generating static pages (6/6)
+2025-01-25T02:07:18.4837821Z    Finalizing page optimization ...
+2025-01-25T02:07:18.4838445Z    Collecting build traces ...
+2025-01-25T02:07:51.6344806Z 
+2025-01-25T02:07:51.6449531Z Route (app)                               Size     First Load JS
+2025-01-25T02:07:51.6450595Z ┌ ○ /                                     5.89 kB        93.3 kB
+2025-01-25T02:07:51.6451359Z ├ ○ /_not-found                           138 B          87.5 kB
+2025-01-25T02:07:51.6452263Z ├ ƒ /api/save-regions                     0 B                0 B
+2025-01-25T02:07:51.6453109Z └ ○ /banner                               1.59 kB        88.9 kB
+2025-01-25T02:07:51.6453732Z + First Load JS shared by all             87.4 kB
+2025-01-25T02:07:51.6454392Z   ├ chunks/117-5a2a5f22cc6d4fe0.js        31.7 kB
+2025-01-25T02:07:51.6455019Z   ├ chunks/fd9d1056-4313c8a7022cf435.js   53.6 kB
+2025-01-25T02:07:51.6455603Z   └ other shared chunks (total)           2 kB
+2025-01-25T02:07:51.6455916Z 
+2025-01-25T02:07:51.6456293Z Route (pages)                             Size     First Load JS
+2025-01-25T02:07:51.6457201Z ─ ○ /404                                  393 B          79.4 kB
+2025-01-25T02:07:51.6457920Z + First Load JS shared by all             79 kB
+2025-01-25T02:07:51.6458423Z   ├ chunks/framework-4be839806aa8e2d3.js  44.8 kB
+2025-01-25T02:07:51.6459040Z   ├ chunks/main-11399b72fc05eb1d.js       32.2 kB
+2025-01-25T02:07:51.6459459Z   └ other shared chunks (total)           1.97 kB
+2025-01-25T02:07:51.6459707Z 
+2025-01-25T02:07:51.6459976Z ○  (Static)   prerendered as static content
+2025-01-25T02:07:51.6460396Z ƒ  (Dynamic)  server-rendered on demand
+2025-01-25T02:07:51.6460608Z 

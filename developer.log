@@ -165,3 +165,21 @@ Issues:
 - Fixed 403 permission error in GitHub Actions deployment
 - Resolved token authentication issues
 ---
+
+[2024-03-21T17:00:00Z] [UPDATE] [next.config.js, .github/workflows/deploy.yml]
+Description: Fixed GitHub Pages deployment configuration and build settings.
+Changes:
+- Removed experimental.appDir from next.config.js as it's not needed
+- Added basePath and assetPrefix for GitHub Pages compatibility
+- Updated GitHub Actions workflow to use official Pages deployment action
+- Configured proper artifact handling and deployment permissions
+Files Modified:
+- next.config.js: Updated config for GitHub Pages compatibility
+- .github/workflows/deploy.yml: Reconfigured for proper Pages deployment
+Tests:
+- Verified successful build with npm run build
+- Tested static asset loading with updated config
+Issues:
+- Fixed 404 errors on GitHub Pages deployment
+- Resolved asset loading issues with proper prefixing
+---
