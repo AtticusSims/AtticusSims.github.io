@@ -11,7 +11,8 @@
 
 # next.js
 /.next/
-/out/
+# Remove or comment out the /out/ line since we need this for GitHub Pages
+# /out/
 
 # production
 /build
