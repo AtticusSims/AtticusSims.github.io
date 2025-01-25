@@ -1,4 +1,29 @@
+@font-face {
+  font-family: "Univers LT Std";
+  src: url("/fonts/UniversLTStd-Cn.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Univers LT Std";
+  src: url("/fonts/UniversLTStd-LightCn.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Univers LT Std";
+  src: url("/fonts/UniversLTStd-BoldCn.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-univers: "Univers LT Std", sans-serif;
   --background-color: #ffffff;
   --text-color: #000000;
   --max-width: 1200px;
@@ -17,6 +42,7 @@ body {
   overflow-x: hidden;
   background-color: var(--background-color);
   color: var(--text-color);
+  font-family: var(--font-univers);
 }
 
 /* Remove default anchor styles */

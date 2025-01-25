@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
@@ -16,19 +17,31 @@ export default function LandingPage() {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className={styles.textWrapper}>
-        <div className={styles.textContainer}>
+      <div className={styles.contentGroup}>
+        <div className={styles.textWrapper}>
           <Image
-            src="/landing_TEXT.svg"
+            src="/landing-TEXT_v3.svg"
             alt="Hong Kong Baptist University Library - The Tree of Knowledge"
             width={1200}
             height={100}
+            priority
             style={{
-              width: "80%",
               height: "auto",
+              width: "100%",
               maxWidth: "1200px",
             }}
           />
+        </div>
+        <div className={styles.buttonGroup}>
+          <Link href="/banner" className={styles.button}>
+            Banner Viewer
+          </Link>
+          <Link href="/essay" className={styles.button}>
+            Essay
+          </Link>
+          <Link href="/about" className={styles.button}>
+            About
+          </Link>
         </div>
       </div>
     </main>

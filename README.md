@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HKBU Interactive Banner Application
+
+An interactive web application that displays an interactive banner for Hong Kong Baptist University, allowing users to explore different regions of the banner with clickable hotspots that link to relevant university resources.
+
+## Features
+
+- **Interactive Banner Viewer**: Navigate and explore the HKBU banner with clickable regions
+- **Admin Interface**: Manage and configure banner hotspots and their associated links
+- **Responsive Design**: Optimized for various screen sizes and devices
+- **Zoom & Pan**: Smooth zoom and pan functionality for detailed banner exploration
+
+## Technology Stack
+
+- Next.js
+- TypeScript
+- CSS Modules
+- GitHub Pages (for deployment)
+
+## Typography
+
+The application uses the Univers LT STD font family:
+
+- **Univers LT STD Condensed** - Primary font for navigation and UI elements
+- **Univers LT STD Light Condensed** - Body text and secondary information
+- **Univers LT STD Bold Condensed** - Headings and emphasis
+
+Font files are located in the `public/fonts` directory:
+
+- `UniversLTStd-Cn.woff` - Regular condensed variant
+- `UniversLTStd-LightCn.woff` - Light condensed variant
+- `UniversLTStd-BoldCn.woff` - Bold condensed variant
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone [repository-url]
+cd hkbu-image-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `/app` - Main application components and pages
+  - `/admin` - Admin interface for managing banner regions
+  - `/banner` - Banner viewer component
+  - `/components` - Reusable React components
+- `/public` - Static assets including images and SVGs
+- `/out` - Production build output
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch.
 
-## Deploy on Vercel
+## Features in Detail
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Banner Viewer
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Interactive navigation of the banner image
+- Clickable regions that link to relevant university resources
+- Smooth zoom and pan functionality
+- Responsive design for all device sizes
+
+### Admin Interface
+
+- Configure and manage clickable regions on the banner
+- Set URLs and subject names for each region
+- Preview changes in real-time
+- Save and update banner configuration
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
