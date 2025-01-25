@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import OpenSeadragon from "openseadragon";
 
 interface OverlayData {
@@ -20,6 +20,7 @@ interface BannerProps {
 export default function Banner({ tileSource, overlays }: BannerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<OpenSeadragon.Viewer | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // If container is null, just return
@@ -35,12 +36,13 @@ export default function Banner({ tileSource, overlays }: BannerProps) {
         element: containerRef.current!,
         tileSources: tileSource,
         prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+        imageLoaderLimit: 10,
+        immediateRender: false,
         defaultZoomLevel: 0.1,
         minZoomLevel: 0.0001,
         maxZoomLevel: 500,
         maxZoomPixelRatio: 10,
         minZoomImageRatio: 0.9,
-        immediateRender: true,
         minPixelRatio: 0.1,
         visibilityRatio: 1.0,
         constrainDuringPan: true,
@@ -58,6 +60,8 @@ export default function Banner({ tileSource, overlays }: BannerProps) {
       });
 
       viewer.addHandler("open", () => {
+        setLoading(false);
+
         const tiledImage = viewer.world.getItemAt(0);
         if (!tiledImage) return;
 
@@ -136,13 +140,17 @@ export default function Banner({ tileSource, overlays }: BannerProps) {
 
   // Use overflow: hidden on the container to prevent scrollbars
   return (
-    <div
-      ref={containerRef}
-      style={{
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-      }}
-    />
+    <>
+      {loading && <div style={{ position: "absolute" }}>Loading...</div>}
+      <div
+        ref={containerRef}
+        style={{
+          display: loading ? "none" : "block",
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      />
+    </>
   );
 }
