@@ -32,6 +32,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Prepare artifact
+        run: |
+          touch out/.nojekyll
+
       - name: Configure Pages
         uses: actions/configure-pages@v4
 
