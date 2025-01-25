@@ -34,6 +34,7 @@ jobs:
 
       - name: Prepare artifact
         run: |
+          mkdir -p out
           touch out/.nojekyll
 
       - name: Configure Pages
