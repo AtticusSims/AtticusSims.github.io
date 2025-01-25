@@ -30,40 +30,28 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
       const OpenSeadragonInstance = OpenSeadragonModule.default;
 
       viewer = OpenSeadragonInstance({
-        element: viewerRef.current!,
+        element: viewerRef.current,
         tileSources: tileSource,
         prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
-
-        // Zoom settings
         defaultZoomLevel: 0.1,
-        minZoomLevel: 0.1,
+        minZoomLevel: 0.0001,
         maxZoomLevel: 500,
         maxZoomPixelRatio: 10,
         minZoomImageRatio: 0.9,
-
-        // Performance settings
         immediateRender: true,
         minPixelRatio: 0.1,
         visibilityRatio: 1.0,
-
-        // Navigation settings
         constrainDuringPan: true,
         showNavigationControl: false,
-
-        // Animation settings
         springStiffness: 7,
         animationTime: 0.5,
         blendTime: 0,
-
-        // Mobile settings
         gestureSettingsTouch: {
           pinchRotate: false,
           zoomToRefPoint: true,
-          pinchMaxZoom: 500,
           flickEnabled: true,
           flickMinSpeed: 20,
           flickMomentum: 0.4,
-          springStiffness: 5.0,
         } as OpenSeadragon.GestureSettings,
       });
 
@@ -71,29 +59,16 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
         if (!viewer) return;
 
         try {
-          const source = viewer.world.getItemAt(0);
-          if (!source) {
+          const tiledImage = viewer.world.getItemAt(0);
+          if (!tiledImage) {
             console.error("No source found after open");
             return;
           }
 
-          // Get image dimensions and calculate initial zoom
-          const contentSize = source.getContentSize();
-          const containerSize = viewer.viewport.getContainerSize();
+          viewer.viewport.homeBounds = tiledImage.getBounds(true);
+          viewer.viewport.fitHorizontally(true);
 
-          // First fit the image to the viewport
-          viewer.viewport.goHome();
-
-          // Then calculate the zoom needed to fit the height
-          const bounds = viewer.viewport.getBounds();
-          const viewportHeight = bounds.height;
-          const zoom = 1.0 / viewportHeight; // This makes the image fill the height
-
-          // Apply the zoom and center
-          viewer.viewport.zoomTo(zoom, undefined, true);
-          viewer.viewport.panTo(viewer.viewport.getCenter(true), true);
-
-          // Add overlays
+          const contentSize = tiledImage.getContentSize();
           overlays.forEach((overlay) => {
             const element = document.createElement("div");
             element.style.position = "absolute";
@@ -104,7 +79,6 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
             element.style.border = "2px solid transparent";
             element.style.transition = "all 0.2s ease";
 
-            // Hover effect
             element.onmouseover = () => {
               element.style.background = "rgba(255, 255, 255, 0.2)";
               element.style.border = "2px solid rgba(255, 255, 255, 0.4)";
@@ -114,39 +88,36 @@ const Banner: React.FC<BannerProps> = ({ tileSource, overlays }) => {
               element.style.border = "2px solid transparent";
             };
 
-            // Convert image coordinates to viewport coordinates
-            const topLeft = viewer!.viewport.imageToViewportCoordinates(
+            const topLeft = viewer.viewport.imageToViewportCoordinates(
               overlay.x * contentSize.x,
               overlay.y * contentSize.y
             );
-            const bottomRight = viewer!.viewport.imageToViewportCoordinates(
+            const bottomRight = viewer.viewport.imageToViewportCoordinates(
               (overlay.x + overlay.width) * contentSize.x,
               (overlay.y + overlay.height) * contentSize.y
             );
 
-            const viewportRect = new OpenSeadragon.Rect(
+            const overlayRect = new OpenSeadragon.Rect(
               topLeft.x,
               topLeft.y,
               bottomRight.x - topLeft.x,
               bottomRight.y - topLeft.y
             );
 
-            // Use MouseTracker for better click handling
             new OpenSeadragon.MouseTracker({
-              element: element,
-              clickHandler: function () {
-                // Add http:// if not present
+              element,
+              clickHandler: () => {
                 const url = overlay.url.startsWith("http")
                   ? overlay.url
                   : `https://${overlay.url}`;
                 window.open(url, "_blank");
-                return false; // Prevent default behavior
+                return false;
               },
             });
 
-            viewer!.addOverlay({
-              element: element,
-              location: viewportRect,
+            viewer.addOverlay({
+              element,
+              location: overlayRect,
               placement: OpenSeadragon.Placement.TOP_LEFT,
               checkResize: false,
             });

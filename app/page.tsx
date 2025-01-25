@@ -9,11 +9,12 @@ export default function LandingPage() {
     <main className={styles.container}>
       <div className={styles.backgroundWrapper}>
         <Image
-          src="/landing_BG.svg"
+          src="/landing_BG_103.webp"
           alt="Decorative circle pattern background"
           fill
           sizes="100vw"
           priority
+          quality={100}
           style={{ objectFit: "cover" }}
         />
       </div>
