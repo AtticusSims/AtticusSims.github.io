@@ -12,7 +12,7 @@ Issues:
 --- 
 
 [2023-10-15T11:00:00Z] [UPDATE] [app/admin/page.tsx]
-Description: Replaced onWheel prop with a manual wheel event listener using { passive: false }. This fixes the console warning about “Unable to preventDefault.”
+Description: Replaced onWheel prop with a manual wheel event listener using { passive: false }. This fixes the console warning about "Unable to preventDefault."
 Changes: 
 - Removed onWheel={handleWheel} from the .imageContainer div.
 - Implemented a useEffect hook that attaches an event listener with passive: false for the wheel event.
@@ -126,4 +126,42 @@ Tests:
 - Tested responsive behavior across screen sizes
 Issues:
 - None discovered during local testing.
+---
+
+[2024-03-21T16:00:00Z] [UPDATE] [next.config.js, pages/_document.tsx, package.json]
+Description: Fixed production build configuration for static export deployment.
+Changes:
+- Added _document.tsx for proper static HTML structure
+- Updated next.config.js to disable app directory and enable static exports
+- Modified package.json clean script for better Windows compatibility
+- Removed export script as it's no longer needed with output: 'export'
+Files Modified:
+- next.config.js: Added experimental.appDir: false and configured static export
+- pages/_document.tsx: Created custom Document component for static generation
+- package.json: Updated clean script to use rimraf --glob
+Tests:
+- Verified successful production build with npm run build
+- Confirmed static files are generated in out directory
+- Tested 404 page generation and routing
+Issues:
+- Initial EPERM error with .next/trace resolved by updating clean script
+- Removed unnecessary --force flag from rimraf command
+---
+
+[2024-03-21T16:30:00Z] [UPDATE] [.github/workflows/deploy.yml]
+Description: Fixed GitHub Actions deployment configuration for GitHub Pages.
+Changes:
+- Updated to use peaceiris/actions-gh-pages action
+- Added explicit permissions for content writing
+- Configured npm caching for faster builds
+- Added force_orphan option for clean deployments
+- Updated Node.js setup to use v3 of setup-node action
+Files Modified:
+- .github/workflows/deploy.yml: Reconfigured deployment workflow
+Tests:
+- Verified GitHub Actions permissions
+- Tested build and deployment process
+Issues:
+- Fixed 403 permission error in GitHub Actions deployment
+- Resolved token authentication issues
 ---
