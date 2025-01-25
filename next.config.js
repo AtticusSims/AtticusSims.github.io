@@ -17,7 +17,7 @@ const nextConfig = {
   trailingSlash: true,
   // Remove experimental.appDir as it's not needed and causing warnings
   basePath: "", // Add this for GitHub Pages
-  assetPrefix: "./", // Add this for GitHub Pages assets
+  assetPrefix: "/", // Must start with a leading slash
 };
 
 module.exports = nextConfig;

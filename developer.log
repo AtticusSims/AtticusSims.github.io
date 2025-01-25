@@ -183,3 +183,15 @@ Issues:
 - Fixed 404 errors on GitHub Pages deployment
 - Resolved asset loading issues with proper prefixing
 ---
+
+[2024-03-21T17:15:00Z] [FIX] [next.config.js]
+Description: Fixed assetPrefix configuration for proper font loading.
+Changes:
+- Changed assetPrefix from './' to '/' to comply with next/font requirements
+- Kept basePath empty for GitHub Pages compatibility
+Tests:
+- Verified font loading works in production build
+- Confirmed static assets are properly referenced
+Issues:
+- Fixed next/font webpack error requiring leading slash in assetPrefix
+---
