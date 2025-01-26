@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import styles from "./BannerPage.module.css";
-import overlayData from "../../banner_coords.json";
+import overlayData from "../../public/data/banner-coords.json";
 
 const DynamicBanner = dynamic(() => import("../components/Banner"), {
   ssr: false,

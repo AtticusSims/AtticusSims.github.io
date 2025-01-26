@@ -254,3 +254,21 @@ Tests:
 Issues:
 - None discovered during local testing
 ---
+
+[2024-03-21T19:00:00Z] [REMOVE] [Multiple Files]
+Description: Removed admin functionality to simplify production deployment.
+Changes:
+- Deleted app/admin/page.tsx and admin.module.css
+- Removed app/api/banner-coords/route.ts
+- Simplified banner page to use static JSON import
+- Updated README.md to remove admin-related documentation
+Files Removed:
+- app/admin/page.tsx
+- app/admin/admin.module.css
+- app/api/banner-coords/route.ts
+Tests:
+- Verified banner viewer works with static JSON data
+- Confirmed all admin-related routes are removed
+Issues:
+- None - clean removal of functionality
+---

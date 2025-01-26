@@ -5,7 +5,6 @@ An interactive web application that displays an interactive banner for Hong Kong
 ## Features
 
 - **Interactive Banner Viewer**: Navigate and explore the HKBU banner with clickable regions
-- **Admin Interface**: Secure management interface for banner hotspots and their associated links
 - **Responsive Design**: Optimized for various screen sizes and devices
 - **Zoom & Pan**: Smooth zoom and pan functionality for detailed banner exploration
 
@@ -69,15 +68,12 @@ npm run build
 ## Project Structure
 
 - `/app` - Main application components and pages
-  - `/admin` - Admin interface for managing banner regions
-    - `page.tsx` - Admin page component with authentication and URL management
-    - `admin.module.css` - Styles for admin interface
-  - `/api` - API routes
-    - `/banner-coords` - Endpoints for managing banner coordinates
-    - `/update-credentials` - Endpoint for updating admin credentials
   - `/banner` - Banner viewer component
   - `/components` - Reusable React components
 - `/public` - Static assets including images and SVGs
+  - `/data` - Static JSON data for banner coordinates
+  - `/fonts` - Typography assets
+  - `/img` - Banner and other image assets
 - `/out` - Production build output
 
 ## Deployment
@@ -93,40 +89,10 @@ The application is automatically deployed to GitHub Pages using GitHub Actions w
 - Smooth zoom and pan functionality
 - Responsive design for all device sizes
 
-### Admin Interface
+### Banner Coordinates
 
-The admin interface provides secure management of banner hotspot URLs. It is protected by a simple authentication system with default credentials.
+The banner coordinates and URLs are stored in a static JSON file at `public/data/banner-coords.json`. Each region in the banner is defined by:
 
-#### File Structure
-
-- `app/admin/page.tsx` - Main admin interface component
-- `app/admin/admin.module.css` - Admin interface styling
-- `app/api/banner-coords/route.ts` - API endpoint for banner coordinates
-- `banner_coords.json` - JSON file storing banner coordinates and URLs
-
-#### Authentication
-
-The admin interface uses simple authentication:
-
-- Default credentials:
-  - Username: `admin`
-  - Password: `admin`
-
-#### Managing Banner URLs
-
-1. Access the admin interface at `/admin`
-2. Log in with the default credentials
-3. Each banner region is displayed with its subject name and current URL
-4. Edit URLs directly in the input fields
-5. Click "Save Changes" to update the coordinates file
-6. Changes are immediately reflected in the banner viewer
-
-#### Security Notes
-
-For production deployment, consider implementing:
-
-- Stronger authentication mechanisms
-- Environment-based credential management
-- API route protection
-- Rate limiting
-- Session management
+- Subject name
+- URL
+- Coordinates (x, y, width, height)
