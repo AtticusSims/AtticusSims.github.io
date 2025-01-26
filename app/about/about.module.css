@@ -210,7 +210,8 @@
     top: 65vh;
     left: 0;
     right: 0;
-    gap: 0.5rem;
+    gap: 0.25rem;
+    padding: 0.5rem;
   }
 
   .links a {
@@ -220,7 +221,7 @@
 
   .logos {
     position: absolute;
-    bottom: 4vh;
+    bottom: 5vh;
     left: 0;
     right: 0;
     gap: 3rem;
@@ -228,16 +229,16 @@
   }
 
   .logo {
-    width: min(25vw, 100px);
+    width: min(22vw, 90px);
   }
 
   .pollenLogo {
-    width: min(30vw, 120px);
+    width: min(26vw, 110px);
   }
 
   .copyright {
     position: absolute;
-    bottom: 1vh;
+    bottom: 1.5vh;
     left: 0;
     right: 0;
     margin: 0;
