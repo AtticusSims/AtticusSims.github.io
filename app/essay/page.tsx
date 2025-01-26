@@ -51,11 +51,11 @@ export default function EssayPage() {
         <section>
           <h2>INTRODUCTION: THE LABRYNTH OF LEARNING</h2>
           <blockquote>
-            "The general system of the sciences and the arts is a sort of
+            &ldquo;The general system of the sciences and the arts is a sort of
             labyrinth, a tortuous road which the intellect enters without quite
-            knowing what direction to take..."
+            knowing what direction to take...&rdquo;
           </blockquote>
-          <p className={styles.attribution}>D'Alembert (1751)</p>
+          <p className={styles.attribution}>D&apos;Alembert (1751)</p>
 
           <p>
             The rate of new knowledge production has reached unprecedented
@@ -88,38 +88,38 @@ export default function EssayPage() {
           </p>
 
           <p>
-            To contextualize our approach, it's valuable to examine historical
-            attempts at structuring human knowledge. Throughout history,
-            scholars have devised various systems to categorize and relate
-            fields of study, often visualized as 'trees of knowledge'. From the
-            classical era, when individuals like Aristotle and Hypatia were said
-            to have mastered most known fields, to our current age where
-            artificial intelligence systems process vast databases of human
-            knowledge, these organizational systems reveal our evolving
-            understanding of knowledge itself.
+            To contextualize our approach, it&apos;s valuable to examine
+            historical attempts at structuring human knowledge. Throughout
+            history, scholars have devised various systems to categorize and
+            relate fields of study, often visualized as &apos;trees of
+            knowledge&apos;. From the classical era, when individuals like
+            Aristotle and Hypatia were said to have mastered most known fields,
+            to our current age where artificial intelligence systems process
+            vast databases of human knowledge, these organizational systems
+            reveal our evolving understanding of knowledge itself.
           </p>
 
           <blockquote>
-            "The distributions and partitions of knowledge are not like several
-            lines that meet at one angle, and so touch but in a point; but are
-            like branches of a tree, that meet in a stem, which have a dimension
-            and quantity of entireness and continuance, before it comes to
-            discontinue and break itself into arms and boughs."
+            &ldquo;The distributions and partitions of knowledge are not like
+            several lines that meet at one angle, and so touch but in a point;
+            but are like branches of a tree, that meet in a stem, which have a
+            dimension and quantity of entireness and continuance, before it
+            comes to discontinue and break itself into arms and boughs.&rdquo;
           </blockquote>
           <p className={styles.attribution}>Francis Bacon (1884)</p>
         </section>
 
         <section>
-          <h2>Porphyry's Tree (3rd century AD)</h2>
+          <h2>Porphyry&apos;s Tree (3rd century AD)</h2>
           <p>
-            Porphyry's Tree stands as one of the earliest attempts to
+            Porphyry&apos;s Tree stands as one of the earliest attempts to
             systematically categorize knowledge. This hierarchical structure,
             introduced by the Neoplatonist philosopher Porphyry, aimed to
             classify substances from the most general to the most specific,
             using a system of binary divisions.
           </p>
           <p>
-            The influence of Porphyry's Tree extended far beyond its time,
+            The influence of Porphyry&apos;s Tree extended far beyond its time,
             shaping philosophical thought and logical reasoning for centuries.
             Its method of dividing concepts into increasingly specific
             subcategories laid the groundwork for future classification systems
@@ -146,12 +146,12 @@ export default function EssayPage() {
           <p>
             In the 13th century, Majorcan polymath Ramon Llull presented his
             Tree of Science, an ambitious attempt to unify all known fields of
-            study into a comprehensive system. Llull's work reflected the
+            study into a comprehensive system. Llull&apos;s work reflected the
             medieval desire for universal understanding, seeking to create a
             method that could generate all possible knowledge.
           </p>
           <p>
-            Llull's tree structure was more complex than its predecessors,
+            Llull&apos;s tree structure was more complex than its predecessors,
             incorporating multiple levels and branches to represent different
             domains of knowledge. This innovative approach not only organized
             existing information but also proposed a method for discovering new
@@ -174,24 +174,26 @@ export default function EssayPage() {
         </section>
 
         <section>
-          <h2>Diderot and d'Alembert's Tree of Knowledge (18th century)</h2>
+          <h2>
+            Diderot and d&apos;Alembert&apos;s Tree of Knowledge (18th century)
+          </h2>
           <p>
             The Encyclopédie, a monumental work of the 18th century
-            Enlightenment led by Diderot and d'Alembert, marked a pivotal shift
-            in knowledge representation. As Umberto Eco argues, this work
-            signaled a transition from the traditional 'tree' structure of
-            knowledge to a more complex 'labyrinth' model. Its innovative
-            cross-referencing system created a web of interconnections that
-            defied simple hierarchical organization.
+            Enlightenment led by Diderot and d&apos;Alembert, marked a pivotal
+            shift in knowledge representation. As Umberto Eco argues, this work
+            signaled a transition from the traditional &apos;tree&apos;
+            structure of knowledge to a more complex &apos;labyrinth&apos;
+            model. Its innovative cross-referencing system created a web of
+            interconnections that defied simple hierarchical organization.
           </p>
           <p>
-            This labyrinthine structure not only reflected the Enlightenment's
-            belief in reason but also challenged the notion of a single,
-            authoritative path through knowledge. By allowing multiple routes of
-            exploration, the Encyclopédie became more than a repository; it
-            emerged as a tool for social and political change, embodying Eco's
-            concept of knowledge as a network of possibilities rather than a
-            fixed hierarchy.
+            This labyrinthine structure not only reflected the
+            Enlightenment&apos;s belief in reason but also challenged the notion
+            of a single, authoritative path through knowledge. By allowing
+            multiple routes of exploration, the Encyclopédie became more than a
+            repository; it emerged as a tool for social and political change,
+            embodying Eco&apos;s concept of knowledge as a network of
+            possibilities rather than a fixed hierarchy.
           </p>
           <div className={styles.imageContainer}>
             <Image
@@ -201,7 +203,7 @@ export default function EssayPage() {
               height={600}
             />
             <figcaption>
-              Tree of Porphyry from Henry Stanislas Nowlan's Rationalis
+              Tree of Porphyry from Henry Stanislas Nowlan&apos;s Rationalis
               philosophia, 1756, Palazzo Falson Historic House Museum.
             </figcaption>
           </div>
@@ -229,34 +231,35 @@ export default function EssayPage() {
         <section>
           <h2>The Foam of Knowledge (21st century)</h2>
           <blockquote>
-            "The guiding morphological principle of the polyspheric world we
-            inhabit is no longer the orb, but rather the symbol of foam. The
+            &ldquo;The guiding morphological principle of the polyspheric world
+            we inhabit is no longer the orb, but rather the symbol of foam. The
             structural implication of the current earth-encompassing
             network-with all its eversions into the virtual realm-is thus not so
-            much a globalization as a foaming."
+            much a globalization as a foaming.&rdquo;
           </blockquote>
           <p className={styles.attribution}>Peter Sloterdijk (2011)</p>
 
           <p>
             Peter Sloterdijk, a contemporary German philosopher, introduced his
-            revolutionary concept of knowledge organization in his 'Spheres'
-            trilogy. Departing from traditional hierarchical models, Sloterdijk
-            proposed a 'foam' metaphor to describe the structure of modern
-            society and, by extension, the organization of knowledge. This
-            concept envisions interconnected bubbles, each representing a sphere
-            of understanding or experience, coexisting and influencing one
-            another as part of a dynamic system.
+            revolutionary concept of knowledge organization in his
+            &apos;Spheres&apos; trilogy. Departing from traditional hierarchical
+            models, Sloterdijk proposed a &apos;foam&apos; metaphor to describe
+            the structure of modern society and, by extension, the organization
+            of knowledge. This concept envisions interconnected bubbles, each
+            representing a sphere of understanding or experience, coexisting and
+            influencing one another as part of a dynamic system.
           </p>
 
           <p>
             Our visualization embodies this foam-like structure, presenting
             knowledge as an interconnected network rather than a rigid
             hierarchy. Each discipline appears as a bubble, with subdisciplines
-            forming smaller, adjacent bubbles. The design reflects Sloterdijk's
-            ideas of co-fragility and multiplicity, where each area of knowledge
-            is both distinct and intimately connected to others. Users can
-            explore these connections through interactive features, revealing
-            the complex relationships between different fields of study.
+            forming smaller, adjacent bubbles. The design reflects
+            Sloterdijk&apos;s ideas of co-fragility and multiplicity, where each
+            area of knowledge is both distinct and intimately connected to
+            others. Users can explore these connections through interactive
+            features, revealing the complex relationships between different
+            fields of study.
           </p>
 
           <p>
@@ -278,8 +281,9 @@ export default function EssayPage() {
           </div>
 
           <blockquote>
-            "We live on an island surrounded by a sea of ignorance. As our
-            island of knowledge grows, so does the shore of our ignorance."
+            &ldquo;We live on an island surrounded by a sea of ignorance. As our
+            island of knowledge grows, so does the shore of our
+            ignorance.&rdquo;
           </blockquote>
           <p className={styles.attribution}>John Archibald Wheeler (1992)</p>
         </section>
