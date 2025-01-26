@@ -271,15 +271,6 @@ export default function EssayPage() {
             understanding and navigating our expanding intellectual universe.
           </p>
 
-          <div className={styles.imageContainer}>
-            <Image
-              src="/essay/04_foam.png"
-              alt="Foam structure visualization"
-              width={352}
-              height={352}
-            />
-          </div>
-
           <blockquote>
             &ldquo;We live on an island surrounded by a sea of ignorance. As our
             island of knowledge grows, so does the shore of our
