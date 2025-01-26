@@ -95,56 +95,38 @@ The application is automatically deployed to GitHub Pages using GitHub Actions w
 
 ### Admin Interface
 
-The admin interface provides secure management of banner hotspot URLs and admin credentials. It is protected by a username/password authentication system.
+The admin interface provides secure management of banner hotspot URLs. It is protected by a simple authentication system with default credentials.
 
 #### File Structure
 
 - `app/admin/page.tsx` - Main admin interface component
 - `app/admin/admin.module.css` - Admin interface styling
 - `app/api/banner-coords/route.ts` - API endpoint for banner coordinates
-- `app/api/update-credentials/route.ts` - API endpoint for credential management
-- `.env.local` - Environment file for storing admin credentials
+- `banner_coords.json` - JSON file storing banner coordinates and URLs
 
 #### Authentication
 
-The admin interface uses environment variables for secure authentication:
+The admin interface uses simple authentication:
 
-- Credentials are stored in `.env.local`
-- Default credentials: username: `admin`, password: `admin`
-- Credentials can be changed through the admin interface
+- Default credentials:
+  - Username: `admin`
+  - Password: `admin`
 
 #### Managing Banner URLs
 
 1. Access the admin interface at `/admin`
-2. Log in with admin credentials
+2. Log in with the default credentials
 3. Each banner region is displayed with its subject name and current URL
 4. Edit URLs directly in the input fields
 5. Click "Save Changes" to update the coordinates file
 6. Changes are immediately reflected in the banner viewer
 
-#### Updating Admin Credentials
-
-1. Log in to the admin interface
-2. Click "Change Credentials" in the header
-3. Enter new username and password
-4. Submit the form to update credentials
-5. Log in again with the new credentials
-
 #### Security Notes
 
-- The `.env.local` file should be backed up securely
-- This file should never be committed to version control
-- For production deployment, use secure environment variable management
-- Consider implementing additional security measures for production use
+For production deployment, consider implementing:
 
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Stronger authentication mechanisms
+- Environment-based credential management
+- API route protection
+- Rate limiting
+- Session management

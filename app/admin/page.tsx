@@ -12,6 +12,10 @@ interface BannerCoord {
   height: number;
 }
 
+// Default credentials
+const DEFAULT_USERNAME = "admin";
+const DEFAULT_PASSWORD = "admin";
+
 export default function AdminPage() {
   const [coords, setCoords] = useState<BannerCoord[]>([]);
   const [message, setMessage] = useState<string>("");
@@ -33,10 +37,7 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const storedUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
-    const storedPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
-
-    if (username === storedUsername && password === storedPassword) {
+    if (username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
       setIsAuthenticated(true);
       setMessage("");
     } else {
