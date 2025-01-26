@@ -1,0 +1,246 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #cce7e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.content {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding: 2rem 0;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.creditRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.creditRow:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.creditRow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.creditRow:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.creditRow:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.role {
+  font-family: var(--font-univers);
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  text-align: right;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.name {
+  font-family: var(--font-univers);
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  letter-spacing: 0.01em;
+}
+
+.acknowledgment {
+  font-family: var(--font-univers);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.links a {
+  font-family: var(--font-univers);
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+.links a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.logo {
+  height: auto;
+  transition: transform 0.3s ease;
+  width: 160px;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.pollenLogo {
+  width: 180px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.copyright {
+  text-align: center;
+  font-family: var(--font-univers);
+  font-size: 0.75rem;
+  color: #1a1a1a;
+  opacity: 0.7;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 0;
+    min-height: 100dvh;
+  }
+
+  .content {
+    height: 100dvh;
+    gap: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .credits {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: min(2vh, 0.75rem);
+    padding: 1rem;
+  }
+
+  .creditRow {
+    grid-template-columns: 1fr;
+    gap: min(0.5vh, 0.15rem);
+    text-align: center;
+  }
+
+  .role {
+    text-align: center;
+    font-size: clamp(0.85rem, 2.5vh, 0.95rem);
+    opacity: 0.9;
+  }
+
+  .name {
+    font-size: clamp(0.85rem, 2.5vh, 0.95rem);
+  }
+
+  .acknowledgment {
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: clamp(0.75rem, 2vh, 0.85rem);
+    line-height: 1.4;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .links {
+    position: absolute;
+    top: 65vh;
+    left: 0;
+    right: 0;
+    gap: 0.5rem;
+  }
+
+  .links a {
+    font-size: clamp(0.75rem, 2vh, 0.85rem);
+    padding: 0.3rem 0.6rem;
+  }
+
+  .logos {
+    position: absolute;
+    bottom: 4vh;
+    left: 0;
+    right: 0;
+    gap: 3rem;
+    padding: 1rem;
+  }
+
+  .logo {
+    width: min(25vw, 100px);
+  }
+
+  .pollenLogo {
+    width: min(30vw, 120px);
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 1vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    font-size: clamp(0.6rem, 1.5vh, 0.7rem);
+  }
+}
